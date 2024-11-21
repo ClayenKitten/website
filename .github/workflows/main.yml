@@ -1,4 +1,4 @@
-name: Main workflow
+name: Pipeline
 permissions: write-all
 
 on:
