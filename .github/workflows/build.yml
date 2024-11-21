@@ -13,8 +13,7 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-      - name: Checkout repository contents
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
       - name: Generate image metadata
         id: meta
@@ -35,6 +34,7 @@ jobs:
         with:
           tags: ${{ steps.meta.outputs.tags }}
           containerfiles: Dockerfile
+          layers: true
 
       - name: Push to GHCR
         uses: redhat-actions/push-to-registry@v2
