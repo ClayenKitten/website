@@ -17,6 +17,9 @@ const socialIcons: Record<string, typeof EmailIcon | undefined> = {
     github: GithubIcon,
     telegram: TelegramIcon,
 };
+
+const socialButtonClass =
+    "inline-flex h-12 items-center justify-center gap-2.5 rounded-full border-2 border-wine/30 px-5 text-base font-semibold text-wine transition-colors duration-200 hover:border-wine hover:bg-wine hover:text-cream focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-wine sm:text-lg";
 ---
 
 <AppLayout>
@@ -72,63 +75,76 @@ const socialIcons: Record<string, typeof EmailIcon | undefined> = {
                     DevOps Engineer &amp; Full Stack Developer
                 </p>
             </section>
-
-            <!-- 
-                Resume button 
-                TODO: uncomment when I decide to publish a resume
-            -->
-            <!-- <a
-                href="/resume.pdf"
-                class="flex h-[81px] w-[280px] items-center justify-center gap-5 rounded-full bg-wine px-6 py-6 font-semibold text-[28px] leading-[28px] text-cream transition-[filter] hover:brightness-[0.8]"
-            >
-                <ResumeIcon class="h-[38px] w-8 shrink-0" aria-hidden="true" />
-                Resume
-            </a> -->
         </main>
 
         <!-- Call to action -->
-        <footer
-            class="relative flex flex-col items-center justify-between gap-6 bg-sun px-6 py-5 sm:flex-row sm:gap-[84px] sm:px-12"
-        >
+        <section class="relative bg-sun px-6 py-10 sm:px-12 sm:py-12">
             <!-- Decoration -->
             <Decoration
-                class="absolute bottom-full left-0 block h-[28.5px] w-full text-sun"
+                class="absolute bottom-[calc(100%-2px)] left-0 block h-10 w-full text-sun"
                 aria-hidden="true"
             />
-            <p class="font-display text-[32px] leading-[28px] text-wine">
-                Let&rsquo;s talk!
-            </p>
             <div
-                class="flex flex-wrap items-center justify-center gap-x-[60px] gap-y-4"
+                class="mx-auto flex w-full max-w-3xl flex-col items-center gap-6 text-center sm:gap-7"
             >
-                {
-                    contacts.map((contact) => (
-                        <div class="flex flex-col gap-1">
-                            <span class="text-sm font-medium uppercase leading-normal tracking-[1.5px] text-ink">
-                                {contact.label}
-                            </span>
-                            <a
-                                href={contact.href}
-                                target={contact.external ? "_blank" : undefined}
-                                rel={
-                                    contact.external
-                                        ? "noopener noreferrer"
-                                        : undefined
-                                }
-                                class="text-lg font-medium leading-normal text-wine underline transition-[filter] hover:brightness-[0.8]"
-                            >
-                                {contact.value}
-                            </a>
-                        </div>
-                    ))
-                }
+                <div class="flex flex-col gap-2">
+                    <h2
+                        class="font-display text-4xl leading-tight text-wine sm:text-5xl"
+                    >
+                        Let&rsquo;s talk!
+                    </h2>
+                    <p
+                        class="text-lg font-medium leading-snug text-wine/75 sm:text-xl"
+                    >
+                        Have a project in mind? My inbox is always open.
+                    </p>
+                </div>
+                <!-- Actions -->
+                <div
+                    class="flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+                >
+                    <a
+                        href="mailto:hello@clayenkitten.dev"
+                        class="inline-flex h-12 items-center justify-center gap-3 rounded-full bg-wine px-7 text-lg font-semibold text-cream shadow-[0_4px_0_0_var(--color-wine)] transition-colors hover:bg-wine/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-wine sm:text-xl"
+                    >
+                        <EmailIcon class="size-6 shrink-0" aria-hidden="true" />
+                        hello@clayenkitten.dev
+                    </a>
+                    <!-- Socials -->
+                    <div class="flex items-center gap-3 sm:gap-4">
+                        <a
+                            href="https://t.me/ClayenKitten"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={socialButtonClass}
+                        >
+                            <TelegramIcon
+                                class="size-5 shrink-0"
+                                aria-hidden="true"
+                            />
+                            Telegram
+                        </a>
+                        <a
+                            href="https://github.com/ClayenKitten"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class={socialButtonClass}
+                        >
+                            <GithubIcon
+                                class="size-5 shrink-0"
+                                aria-hidden="true"
+                            />
+                            GitHub
+                        </a>
+                    </div>
+                </div>
             </div>
-        </footer>
+        </section>
     </div>
     <!-- About & skills -->
     <section class="relative bg-cream px-6 py-16 sm:px-12 sm:py-24">
         <Decoration
-            class="absolute left-0 top-0 block h-[28.5px] w-full rotate-180 text-sun"
+            class="absolute -top-0.5 left-0 block h-[28.5px] w-full rotate-180 text-sun"
             aria-hidden="true"
         />
 
