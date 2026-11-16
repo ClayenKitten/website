@@ -16,10 +16,10 @@ skills = [
 order = 2
 label = "Backend"
 skills = [
-    { label = "NodeJS", icon = "nodejs", wide = true },
+    { label = "TypeScript", icon = "typescript" },
     { label = "Python", icon = "python" },
-    { label = "ASP.Net", icon = "csharp" },
-    { label = "Rust", icon = "rust", wide = true },
+    { label = "C#", icon = "csharp" },
+    { label = "Rust", icon = "rust" },
 ]
 
 [frontend]
