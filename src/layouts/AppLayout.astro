@@ -1,0 +1,19 @@
+---
+import { Font } from "astro:assets";
+import "../styles/global.css";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <Font cssVariable="--font-montserrat" preload />
+        <Font cssVariable="--font-dela-gothic-one" preload />
+        <title>ClayenKitten</title>
+    </head>
+    <body class="flex flex-col">
+        <slot />
+    </body>
+</html>

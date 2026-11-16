@@ -1,0 +1,14 @@
+[email]
+order = 1
+label = "Email"
+value = "hello@clayenkitten.dev"
+
+[telegram]
+order = 2
+label = "Telegram"
+value = "https://t.me/ClayenKitten"
+
+[github]
+order = 3
+label = "GitHub"
+value = "https://github.com/ClayenKitten"

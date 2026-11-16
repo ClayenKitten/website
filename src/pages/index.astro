@@ -1,0 +1,241 @@
+---
+import { Image } from "astro:assets";
+import AppLayout from "../layouts/AppLayout.astro";
+import { getContacts, getSkillGroups } from "../loaders";
+import * as About from "../../content/about.md";
+import mascot from "../assets/mascot.png";
+import Decoration from "../assets/decoration.svg";
+import EmailIcon from "../assets/socials/email.svg";
+import GithubIcon from "../assets/socials/github.svg";
+import TelegramIcon from "../assets/socials/telegram.svg";
+
+const skillGroups = await getSkillGroups();
+const contacts = await getContacts();
+
+const socialIcons: Record<string, typeof EmailIcon | undefined> = {
+    email: EmailIcon,
+    github: GithubIcon,
+    telegram: TelegramIcon,
+};
+---
+
+<AppLayout>
+    <div class="flex min-h-dvh flex-col bg-cream">
+        <main
+            class="relative flex flex-1 flex-col items-center justify-center gap-16 px-6 py-16"
+        >
+            <!--
+                Language switcher
+                TODO: uncomment after Russian version implementation
+             -->
+            <!-- <a
+                href="/ru"
+                class="absolute right-4 top-4 flex h-20 w-20 items-center justify-center rounded-full bg-cream font-bold text-[28px] leading-[28px] text-wine transition-shadow hover:shadow-[0_0_10px_#00000040] sm:right-12 sm:top-12"
+            >
+                EN
+            </a> -->
+
+            <!-- Introduction -->
+            <section class="flex flex-col items-center gap-8">
+                <div class="flex flex-col items-center gap-8 sm:flex-row">
+                    <Image
+                        src={mascot}
+                        alt="ClayenKitten mascot"
+                        width="197"
+                        height="176"
+                        class="h-44 w-[197px] shrink-0 object-contain"
+                    />
+                    <div class="flex flex-col text-wine">
+                        <p
+                            class="font-display text-3xl leading-none sm:text-4xl"
+                        >
+                            Hello! I&rsquo;m
+                        </p>
+                        <div class="mt-1 flex flex-col gap-4">
+                            <h1
+                                class="font-display text-5xl leading-[1.1] tracking-[-2px] sm:text-[76px]"
+                            >
+                                ClayenKitten
+                            </h1>
+                            <p
+                                class="font-display text-2xl leading-none sm:text-[40px]"
+                            >
+                                <span class="font-sans font-normal">aka</span> Dmitriy
+                                Katrushenko
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <p
+                    class="text-center text-2xl leading-normal text-ink sm:text-[32px]"
+                >
+                    DevOps Engineer &amp; Full Stack Developer
+                </p>
+            </section>
+
+            <!-- 
+                Resume button 
+                TODO: uncomment when I decide to publish a resume
+            -->
+            <!-- <a
+                href="/resume.pdf"
+                class="flex h-[81px] w-[280px] items-center justify-center gap-5 rounded-full bg-wine px-6 py-6 font-semibold text-[28px] leading-[28px] text-cream transition-[filter] hover:brightness-[0.8]"
+            >
+                <ResumeIcon class="h-[38px] w-8 shrink-0" aria-hidden="true" />
+                Resume
+            </a> -->
+        </main>
+
+        <!-- Call to action -->
+        <footer
+            class="relative flex flex-col items-center justify-between gap-6 bg-sun px-6 py-5 sm:flex-row sm:gap-[84px] sm:px-12"
+        >
+            <!-- Decoration -->
+            <Decoration
+                class="absolute bottom-full left-0 block h-[28.5px] w-full text-sun"
+                aria-hidden="true"
+            />
+            <p class="font-display text-[32px] leading-[28px] text-wine">
+                Let&rsquo;s talk!
+            </p>
+            <div
+                class="flex flex-wrap items-center justify-center gap-x-[60px] gap-y-4"
+            >
+                {
+                    contacts.map((contact) => (
+                        <div class="flex flex-col gap-1">
+                            <span class="text-sm font-medium uppercase leading-normal tracking-[1.5px] text-ink">
+                                {contact.label}
+                            </span>
+                            <a
+                                href={contact.href}
+                                target={contact.external ? "_blank" : undefined}
+                                rel={
+                                    contact.external
+                                        ? "noopener noreferrer"
+                                        : undefined
+                                }
+                                class="text-lg font-medium leading-normal text-wine underline transition-[filter] hover:brightness-[0.8]"
+                            >
+                                {contact.value}
+                            </a>
+                        </div>
+                    ))
+                }
+            </div>
+        </footer>
+    </div>
+    <!-- About & skills -->
+    <section class="relative bg-cream px-6 py-16 sm:px-12 sm:py-24">
+        <Decoration
+            class="absolute left-0 top-0 block h-[28.5px] w-full rotate-180 text-sun"
+            aria-hidden="true"
+        />
+
+        <div
+            class="mx-auto grid w-full max-w-6xl gap-16 lg:grid-cols-2 lg:gap-24"
+        >
+            <!-- About -->
+            <div class="flex flex-col gap-8">
+                <h2 class="font-display text-3xl text-wine sm:text-4xl">
+                    About
+                </h2>
+                <div
+                    class="flex flex-col gap-4 text-lg leading-relaxed text-ink"
+                >
+                    <About.default />
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="flex flex-col gap-10">
+                <h2 class="font-display text-3xl text-wine sm:text-4xl">
+                    Skills
+                </h2>
+                {
+                    skillGroups.map((group) => (
+                        <div class="flex flex-col gap-4">
+                            <h3 class="text-xl font-bold text-ink">
+                                {group.label}
+                            </h3>
+                            <ul class="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                                {group.skills.map((skill) => (
+                                    <li
+                                        class:list={[
+                                            "flex items-center justify-center gap-2.5 rounded-2xl border border-wine/10 bg-sun/40 px-4 py-3.5 font-medium text-ink",
+                                            skill.wide && "sm:col-span-2",
+                                        ]}
+                                    >
+                                        <img
+                                            src={`/icons/skills/${skill.icon}.svg`}
+                                            alt=""
+                                            class="size-6 shrink-0"
+                                        />
+                                        {skill.label}
+                                    </li>
+                                ))}
+                            </ul>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-wine px-6 py-10 sm:px-12 sm:py-12">
+        <div
+            class="mx-auto flex w-full max-w-6xl flex-col items-start justify-between gap-8 sm:flex-row sm:items-end"
+        >
+            <!-- Contacts -->
+            <div class="flex flex-col gap-4">
+                <p class="font-display text-2xl leading-none text-cream">
+                    Contacts
+                </p>
+                <ul class="flex flex-col gap-2.5">
+                    {
+                        contacts.map((contact) => {
+                            const Icon = socialIcons[contact.id];
+                            return (
+                                <li>
+                                    <a
+                                        href={contact.href}
+                                        target={
+                                            contact.external
+                                                ? "_blank"
+                                                : undefined
+                                        }
+                                        rel={
+                                            contact.external
+                                                ? "noopener noreferrer"
+                                                : undefined
+                                        }
+                                        class="flex items-center gap-2.5 text-lg font-medium leading-normal text-cream transition-[filter] hover:brightness-[0.8]"
+                                    >
+                                        {Icon && (
+                                            <Icon
+                                                class="size-6 shrink-0 self-center"
+                                                aria-hidden="true"
+                                            />
+                                        )}
+                                        {contact.value}
+                                    </a>
+                                </li>
+                            );
+                        })
+                    }
+                </ul>
+            </div>
+
+            <!-- Mascot -->
+            <Image
+                src={mascot}
+                alt="ClayenKitten mascot"
+                width="197"
+                height="176"
+                class="h-28 w-auto shrink-0 self-center object-contain sm:h-36 sm:self-end"
+                loading="lazy"
+            />
+        </div>
+    </footer>
+</AppLayout>

@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+    --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+    --font-display:
+        var(--font-dela-gothic-one), var(--font-montserrat), ui-sans-serif,
+        system-ui, sans-serif;
+
+    --color-cream: #fff0e9;
+    --color-sun: #ffce73;
+    --color-wine: #872e2e;
+    --color-ink: #1f1f1f;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        scroll-behavior: smooth;
+    }
+}

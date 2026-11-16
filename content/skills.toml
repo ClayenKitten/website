@@ -1,0 +1,33 @@
+[devops]
+order = 1
+label = "DevOps"
+skills = [
+    { label = "Kubernetes", icon = "kubernetes", wide = true },
+    { label = "Docker", icon = "docker" },
+    { label = "PostgreSQL", icon = "postgresql" },
+    { label = "Linux", icon = "linux", wide = true },
+    { label = "CI/CD", icon = "github-actions", wide = true },
+    { label = "Proxmox", icon = "proxmox" },
+    { label = "Ansible", icon = "ansible" },
+    { label = "Monitoring", icon = "grafana", wide = true },
+]
+
+[backend]
+order = 2
+label = "Backend"
+skills = [
+    { label = "NodeJS", icon = "nodejs", wide = true },
+    { label = "Python", icon = "python" },
+    { label = "ASP.Net", icon = "csharp" },
+    { label = "Rust", icon = "rust", wide = true },
+]
+
+[frontend]
+order = 3
+label = "Frontend"
+skills = [
+    { label = "Svelte", icon = "svelte" },
+    { label = "React", icon = "react" },
+    { label = "Astro", icon = "astro" },
+    { label = "TailwindCSS", icon = "tailwind-css" },
+]
