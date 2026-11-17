@@ -17,6 +17,7 @@ export default defineConfig({
                         weight: 400,
                         style: "normal",
                         src: [
+                            "./src/assets/fonts/dela-gothic-one/DelaGothicOne.woff2",
                             "./src/assets/fonts/dela-gothic-one/DelaGothicOne.ttf",
                         ],
                     },
@@ -33,6 +34,7 @@ export default defineConfig({
                         weight: "100 900",
                         style: "normal",
                         src: [
+                            "./src/assets/fonts/montserrat/Montserrat-VariableFont_wght.woff2",
                             "./src/assets/fonts/montserrat/Montserrat-VariableFont_wght.ttf",
                         ],
                     },
@@ -40,6 +42,7 @@ export default defineConfig({
                         weight: "100 900",
                         style: "italic",
                         src: [
+                            "./src/assets/fonts/montserrat/Montserrat-Italic-VariableFont_wght.woff2",
                             "./src/assets/fonts/montserrat/Montserrat-Italic-VariableFont_wght.ttf",
                         ],
                     },
