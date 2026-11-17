@@ -12,6 +12,23 @@
     --color-ink: #1f1f1f;
 }
 
+/* Subtle grid background used on cream sections */
+.bg-grid {
+    background-image:
+        linear-gradient(
+            to right,
+            color-mix(in srgb, var(--color-wine) 9%, transparent) 1px,
+            transparent 1px
+        ),
+        linear-gradient(
+            to bottom,
+            color-mix(in srgb, var(--color-wine) 9%, transparent) 1px,
+            transparent 1px
+        );
+    background-size: 50px 50px;
+    background-position: center center;
+}
+
 @media (prefers-reduced-motion: no-preference) {
     :root {
         scroll-behavior: smooth;
