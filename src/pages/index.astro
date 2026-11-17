@@ -39,12 +39,20 @@ const contacts = await getContacts();
                             src={mascot}
                             alt=""
                             class="h-full w-full object-contain"
+                            width={200}
+                            height={176}
+                            widths={[200, 400, 800]}
+                            sizes="200px"
                             priority
                         />
                         <Image
                             src={mascotTongue}
                             alt=""
                             class="absolute inset-0 h-full w-full object-contain opacity-0 transition-opacity duration-200 group-hover:opacity-100"
+                            width={200}
+                            height={176}
+                            widths={[200, 400, 800]}
+                            sizes="200px"
                             loading="lazy"
                         />
                     </div>
