@@ -8,15 +8,9 @@ export async function getSkillGroups() {
 }
 
 export async function getContacts() {
-    const contacts = await getCollection("contacts");
-    return contacts
-        .sort((a, b) => a.data.order - b.data.order)
-        .map(({ id, data }) => ({
-            ...data,
-            id,
-            href: data.value.startsWith("http")
-                ? data.value
-                : `mailto:${data.value}`,
-            external: data.value.startsWith("http"),
-        }));
+    const [contacts] = await getCollection("contacts");
+    if (!contacts) {
+        throw new Error("Missing contacts data in content/contacts.toml");
+    }
+    return contacts.data;
 }

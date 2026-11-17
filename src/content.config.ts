@@ -1,5 +1,5 @@
 import { defineCollection } from "astro:content";
-import { file } from "astro/loaders";
+import { file, glob } from "astro/loaders";
 import { z } from "astro/zod";
 
 const skillGroups = defineCollection({
@@ -18,11 +18,11 @@ const skillGroups = defineCollection({
 });
 
 const contacts = defineCollection({
-    loader: file("./content/contacts.toml"),
+    loader: glob({ pattern: "contacts.toml", base: "./content" }),
     schema: z.object({
-        order: z.int(),
-        label: z.string(),
-        value: z.string(),
+        email: z.string(),
+        telegram: z.string(),
+        github: z.string(),
     }),
 });
 

@@ -1,0 +1,128 @@
+---
+import { Image } from "astro:assets";
+import ArrowUpIcon from "../assets/arrow-up.svg";
+import Decoration from "../assets/decoration.svg";
+import mascot from "../assets/mascot.png";
+import EmailIcon from "../assets/socials/email.svg";
+import GithubIcon from "../assets/socials/github.svg";
+import TelegramIcon from "../assets/socials/telegram.svg";
+
+interface Props {
+    contacts: {
+        email: string;
+        telegram: string;
+        github: string;
+    };
+}
+
+const { contacts } = Astro.props;
+
+const year = new Date().getFullYear();
+---
+
+<!-- Footer -->
+<footer class="relative bg-wine px-6 pb-8 pt-12 sm:px-12 sm:pb-10 sm:pt-14">
+    <!-- Decoration -->
+    <Decoration
+        class="absolute bottom-[calc(100%-2px)] left-0 block h-10 w-full text-wine"
+        aria-hidden="true"
+    />
+    <div class="mx-auto flex w-full max-w-6xl flex-col gap-10">
+        <div
+            class="flex flex-col items-start justify-between gap-8 sm:flex-row sm:items-end"
+        >
+            <!-- Contacts -->
+            <nav aria-label="Contact links" class="flex flex-col gap-4">
+                <h2 class="font-display text-2xl leading-none text-cream">
+                    Contacts
+                </h2>
+                <ul class="flex flex-col gap-2.5">
+                    <li>
+                        <a
+                            href={`mailto:${contacts.email}`}
+                            class="group flex w-fit items-center gap-2.5 text-lg font-medium leading-normal text-cream transition-colors duration-200 hover:text-sun focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream"
+                        >
+                            <EmailIcon
+                                class="size-6 shrink-0 self-center transition-transform duration-200 group-hover:-translate-y-0.5"
+                                aria-hidden="true"
+                            />
+                            <span class="relative">
+                                {contacts.email}
+                                <span
+                                    class="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-sun transition-transform duration-200 group-hover:scale-x-100"
+                                    aria-hidden="true"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href={contacts.telegram}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group flex w-fit items-center gap-2.5 text-lg font-medium leading-normal text-cream transition-colors duration-200 hover:text-sun focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream"
+                        >
+                            <TelegramIcon
+                                class="size-6 shrink-0 self-center transition-transform duration-200 group-hover:-translate-y-0.5"
+                                aria-hidden="true"
+                            />
+                            <span class="relative">
+                                Telegram
+                                <span
+                                    class="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-sun transition-transform duration-200 group-hover:scale-x-100"
+                                    aria-hidden="true"></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a
+                            href={contacts.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="group flex w-fit items-center gap-2.5 text-lg font-medium leading-normal text-cream transition-colors duration-200 hover:text-sun focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream"
+                        >
+                            <GithubIcon
+                                class="size-6 shrink-0 self-center transition-transform duration-200 group-hover:-translate-y-0.5"
+                                aria-hidden="true"
+                            />
+                            <span class="relative">
+                                GitHub
+                                <span
+                                    class="absolute -bottom-0.5 left-0 h-0.5 w-full origin-left scale-x-0 rounded-full bg-sun transition-transform duration-200 group-hover:scale-x-100"
+                                    aria-hidden="true"></span>
+                            </span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Mascot -->
+            <Image
+                src={mascot}
+                alt="ClayenKitten mascot"
+                width="197"
+                height="176"
+                class="h-28 w-auto shrink-0 self-center object-contain sm:h-36 sm:self-end"
+                loading="lazy"
+            />
+        </div>
+
+        <!-- Bottom bar -->
+        <div
+            class="flex flex-col items-center justify-between gap-4 border-t border-cream/20 pt-6 sm:flex-row"
+        >
+            <p class="text-sm font-medium text-cream/75">
+                © {year} Dmitriy Katrushenko. All rights reserved.
+            </p>
+            <a
+                href="#top"
+                class="group inline-flex items-center gap-2 text-sm font-semibold text-cream transition-colors duration-200 hover:text-sun focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cream"
+            >
+                Back to top
+                <ArrowUpIcon
+                    class="size-4 shrink-0 transition-transform duration-200 group-hover:-translate-y-0.5"
+                    aria-hidden="true"
+                />
+            </a>
+        </div>
+    </div>
+</footer>
